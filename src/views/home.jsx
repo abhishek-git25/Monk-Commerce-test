@@ -1,13 +1,20 @@
 import React, { useState } from 'react'
 import ProductPicker from '../component/product_picker';
+import { Button } from 'reactstrap';
+import { Reorder } from "framer-motion"
+import ProductModal from '../component/product_modal';
+
+
 
 const Home = () => {
+    
+    const [modelOpen, setModelOpen] = useState(false)
 
     const [products, setProducts] = useState([
         { id: 1, title: "Select Product", variants: [] },
     ]);
 
-    // Add a new product (parent) without variants
+
     const handleAddParent = () => {
         const newProduct = {
             id: products.length + 1,
@@ -17,12 +24,15 @@ const Home = () => {
         setProducts([...products, newProduct]);
     };
 
-    // Remove a parent and its variants
+    const handleModelClose = () => {
+        setModelOpen(false)
+    }
+
     const handleRemoveParent = (id) => {
         setProducts(products.filter((product) => product.id !== id));
     };
 
-    // Remove a specific variant from a parent
+    
     const handleRemoveVariant = (productId, variantId) => {
         setProducts((prevProducts) =>
             prevProducts.map((product) =>
@@ -42,19 +52,31 @@ const Home = () => {
 
 
     return (
-        <div style={{ padding: "20px" }} className='w-50'>
-            {products.map((product, index) => (
-                <ProductPicker
-                    key={product.id}
-                    index={index + 1}
-                    product={product}
-                    hasMultipleParents={products.length > 1}
-                    onRemoveParent={() => handleRemoveParent(product.id)}
-                    onRemoveChild={handleRemoveVariant}
-                />
-            ))}
-            <button onClick={handleAddParent}>Add Product</button>
-        </div>
+        <>
+            <Reorder.Group axis="y" values={products} onReorder={setProducts} className='product-picker mx-auto'>
+                <div className=''>
+                    {products.map((product, index) => (
+                        <Reorder.Item key={product.id} value={product}>
+
+                            <ProductPicker
+                                key={product.id}
+                                index={index + 1}
+                                product={product}
+                                hasMultipleParents={products.length > 1}
+                                onRemoveParent={() => handleRemoveParent(product.id)}
+                                onRemoveChild={handleRemoveVariant}
+                                setProducts={setProducts}
+                                setModelOpen = {setModelOpen}
+                            />
+                        </Reorder.Item>
+                    ))}
+                    <div className='w-100 mt-5 px-4'>
+                        <Button onClick={handleAddParent} className=' button-lg me-auto' color='primary' size='lg' outline style={{ float: "right" }} >Add Product</Button>
+                    </div>
+                </div>
+            </Reorder.Group>
+            <ProductModal isOpen={modelOpen} toggle={handleModelClose} />
+        </>
 
     )
 }

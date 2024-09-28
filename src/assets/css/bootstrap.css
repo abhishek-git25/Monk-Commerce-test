@@ -98,7 +98,7 @@
     --bs-code-color: #d63384;
     --bs-highlight-color: #212529;
     --bs-highlight-bg: #fff3cd;
-    --bs-border-width: 1px;
+    --bs-border-width: 2px;
     --bs-border-style: solid;
     --bs-border-color: #000000CC;
     --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
@@ -2424,9 +2424,9 @@ progress {
     appearance: none;
     background-color: var(--bs-body-bg);
     background-clip: padding-box;
-    border: var(--bs-border-width) solid var(--bs-border-color);
+    border: 1px solid #00000012;
     border-radius: var(--bs-border-radius);
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+    /* transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out */
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -2446,9 +2446,9 @@ progress {
 .form-control:focus {
     color: var(--bs-body-color);
     background-color: var(--bs-body-bg);
-    border-color: #86b7fe;
+    /* border-color: #86b7fe; */
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+    /* box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25) */
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -2463,7 +2463,7 @@ progress {
 }
 
 .form-control::-moz-placeholder {
-    color: var(--bs-secondary-color);
+    color:  #00000080;
     opacity: 1
 }
 
@@ -2741,7 +2741,7 @@ textarea.form-control-lg {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    border: var(--bs-border-width) solid var(--bs-border-color);
+    border: 1px solid #000000CC;
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
     print-color-adjust: exact
@@ -2756,13 +2756,13 @@ textarea.form-control-lg {
 }
 
 .form-check-input:active {
-    filter: brightness(90%)
+    /* filter: brightness(90%) */
 }
 
 .form-check-input:focus {
-    border-color: #828f8c;
+    /* border-color: #828f8c; */
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+    /* box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25) */
 }
 
 .form-check-input:checked {
@@ -3415,7 +3415,7 @@ textarea.form-control.is-invalid {
     --bs-btn-padding-y: 0.375rem;
     --bs-btn-font-family: ;
     --bs-btn-font-size: 1rem;
-    --bs-btn-font-weight: 400;
+    --bs-btn-font-weight: 600;
     --bs-btn-line-height: 1.5;
     --bs-btn-color: var(--bs-body-color);
     --bs-btn-bg: transparent;
@@ -6194,20 +6194,20 @@ fieldset:disabled .btn {
     --bs-modal-margin: 0.5rem;
     --bs-modal-color: ;
     --bs-modal-bg: var(--bs-body-bg);
-    --bs-modal-border-color: var(--bs-border-color-translucent);
-    --bs-modal-border-width: var(--bs-border-width);
+    --bs-modal-border-color: #0000001A;
+    --bs-modal-border-width: 1px;
     --bs-modal-border-radius: var(--bs-border-radius-lg);
     --bs-modal-box-shadow: var(--bs-box-shadow-sm);
     --bs-modal-inner-border-radius: calc(var(--bs-border-radius-lg) - (var(--bs-border-width)));
     --bs-modal-header-padding-x: 1rem;
     --bs-modal-header-padding-y: 1rem;
     --bs-modal-header-padding: 1rem 1rem;
-    --bs-modal-header-border-color: var(--bs-border-color);
+    --bs-modal-header-border-color: #0000001A;
     --bs-modal-header-border-width: var(--bs-border-width);
     --bs-modal-title-line-height: 1.5;
     --bs-modal-footer-gap: 0.5rem;
     --bs-modal-footer-bg: ;
-    --bs-modal-footer-border-color: var(--bs-border-color);
+    --bs-modal-footer-border-color: #0000001A;
     --bs-modal-footer-border-width: var(--bs-border-width);
     position: fixed;
     top: 0;

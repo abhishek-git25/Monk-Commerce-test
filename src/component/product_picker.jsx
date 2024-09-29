@@ -42,9 +42,7 @@ const ProductPicker = ({ product, onRemoveParent, hasMultipleParents, onRemoveCh
 
     const handleToggleVariants = () => setShowVariants(!showVariants);
 
-    const handleRemoveVariant = (variantId) => {
-        onRemoveChild(product.id, variantId);
-    };
+
 
 
     const handleReorder = (productId, newVariants) => {

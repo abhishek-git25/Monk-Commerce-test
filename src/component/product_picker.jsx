@@ -83,7 +83,7 @@ const ProductPicker = ({ product, onRemoveParent, hasMultipleParents, onRemoveCh
                     >
                         <span className='ps-2'>{product.title}</span>
                         <span style={{ flexGrow: 1 }}>
-                            <img src={EditIcon} alt='edit' className='clickable pt-1' style={{ float: "right" }} onClick={() => setModelOpen(true)} />
+                            <img src={EditIcon} alt='edit' className='clickable pt-1' style={{ float: "right" }} onClick={() => setModelOpen(true , product?.id)} />
                         </span>
                     </div>
 
@@ -164,7 +164,7 @@ const ProductPicker = ({ product, onRemoveParent, hasMultipleParents, onRemoveCh
                                     </div>
 
                                     <div className='p-2'>
-                                        <span onClick={handleRemoveVariant} className='clickable' >
+                                        <span onClick={() =>  onRemoveChild(product.id , variant.id)} className='clickable' >
                                             <VscClose size={25} className='text-muted' />
 
                                         </span>

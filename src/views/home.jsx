@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductPicker from '../component/product_picker';
 import { Button } from 'reactstrap';
 import { Reorder } from "framer-motion"
@@ -7,11 +7,15 @@ import ProductModal from '../component/product_modal';
 
 
 const Home = () => {
-    
+
     const [modelOpen, setModelOpen] = useState(false)
 
+    const [productList, setProductList] = useState([])
+    const [selectedProducts, setSelectedProducts] = useState([]);
+    const [defaultProdId, setDefaultProdId] = useState()
+
     const [products, setProducts] = useState([
-        { id: 1, title: "Select Product", variants: [] },
+        { id: 1, title: "Select Product", variants: [], isDefault: true },
     ]);
 
 
@@ -20,9 +24,16 @@ const Home = () => {
             id: products.length + 1,
             title: "Sample Product",
             variants: [],
+            isDefault: true
         };
         setProducts([...products, newProduct]);
     };
+
+
+    const handleModelOpen =  (state , id) => {
+        setModelOpen(state)
+        setDefaultProdId(id)
+    }
 
     const handleModelClose = () => {
         setModelOpen(false)
@@ -32,8 +43,10 @@ const Home = () => {
         setProducts(products.filter((product) => product.id !== id));
     };
 
-    
+
     const handleRemoveVariant = (productId, variantId) => {
+        console.log(productId , variantId , "75");
+        
         setProducts((prevProducts) =>
             prevProducts.map((product) =>
                 product.id === productId
@@ -47,7 +60,6 @@ const Home = () => {
             )
         );
     };
-
 
 
 
@@ -66,7 +78,7 @@ const Home = () => {
                                 onRemoveParent={() => handleRemoveParent(product.id)}
                                 onRemoveChild={handleRemoveVariant}
                                 setProducts={setProducts}
-                                setModelOpen = {setModelOpen}
+                                setModelOpen={handleModelOpen}
                             />
                         </Reorder.Item>
                     ))}
@@ -75,7 +87,17 @@ const Home = () => {
                     </div>
                 </div>
             </Reorder.Group>
-            <ProductModal isOpen={modelOpen} toggle={handleModelClose} />
+            <ProductModal
+                isOpen={modelOpen}
+                toggle={handleModelClose}
+                productList={productList}
+                setProductList={setProductList}
+                selectedProducts={selectedProducts}
+                setSelectedProducts={setSelectedProducts}
+                setProducts={setProducts}
+                defaultProdId = {defaultProdId}
+                products = {products}
+            />
         </>
 
     )

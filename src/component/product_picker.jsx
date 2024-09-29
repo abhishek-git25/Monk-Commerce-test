@@ -90,7 +90,7 @@ const ProductPicker = ({ product, onRemoveParent, hasMultipleParents, onRemoveCh
                             <Button color='primary' className='button-md ' size='md' onClick={() => handleDiscountVisiblity()}>Add Discount</Button>
                             :
                             <>
-                                <Input className='border border-white fs-sm' />
+                                <Input className='border border-white fs-md' />
 
                                 <Input
                                     className='border border-white fs-sm mx-2'
@@ -143,7 +143,7 @@ const ProductPicker = ({ product, onRemoveParent, hasMultipleParents, onRemoveCh
                                         <span>{variant.title}</span>
                                     </div>
                                     <div className='d-flex align-items-center w-100 px-2'>
-                                        <Input className='border border-white fs-sm' />
+                                        <Input className='border border-white fs-md' />
 
                                         <Input
                                             className='border border-white fs-sm mx-2'

@@ -6,6 +6,14 @@
     width: 193px;
 }
 
+.fs-sm {
+  font-size: 10px
+}
+
+.fs-md {
+  font-size: 14px;
+}
+
 
 .fixed-header {
     position: fixed;
@@ -33,4 +41,55 @@
     font-size: 1.5rem;
     color: #333;
   }
+
+  .product-picker{
+    width: 50%;
+    padding: "20px";
+    list-style-type: none;
+  }
   
+  .clickable {
+    cursor: pointer;
+  }
+
+  .custom-table tr td{
+    border-bottom: 1px solid #0000001A;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .modal-scroll-area {
+    overflow: auto;
+    height: calc(60vh - 60px);
+}
+
+/* Firefox */
+.modal-scroll-area {
+    scrollbar-width: 8px; /* For Firefox */
+    scrollbar-color: #00000000; /* Set scrollbar color */
+}
+
+/* WebKit browsers (Chrome, Safari) */
+.modal-scroll-area::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+.modal-scroll-area::-webkit-scrollbar-track {
+    background: transparent; /* Background of the track */
+}
+
+/* Handle */
+.modal-scroll-area::-webkit-scrollbar-thumb {
+    background: #008060; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+/* Hover effect on the scrollbar thumb */
+.modal-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: #005b40; /* Darker color on hover */
+}
+
+  .border-bottom-custom {
+    border-bottom: 1px solid #0000001A;
+  }

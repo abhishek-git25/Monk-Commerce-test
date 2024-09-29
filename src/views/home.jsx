@@ -11,7 +11,6 @@ const Home = () => {
     const [modelOpen, setModelOpen] = useState(false)
 
     const [productList, setProductList] = useState([])
-    const [selectedProducts, setSelectedProducts] = useState([]);
     const [defaultProdId, setDefaultProdId] = useState()
 
     const [products, setProducts] = useState([
@@ -45,7 +44,6 @@ const Home = () => {
 
 
     const handleRemoveVariant = (productId, variantId) => {
-        console.log(productId , variantId , "75");
         
         setProducts((prevProducts) =>
             prevProducts.map((product) =>
@@ -92,8 +90,6 @@ const Home = () => {
                 toggle={handleModelClose}
                 productList={productList}
                 setProductList={setProductList}
-                selectedProducts={selectedProducts}
-                setSelectedProducts={setSelectedProducts}
                 setProducts={setProducts}
                 defaultProdId = {defaultProdId}
                 products = {products}

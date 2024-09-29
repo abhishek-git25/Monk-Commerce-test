@@ -14,7 +14,7 @@ import { fetchProducts } from "../services/products";
 import { debounce } from "lodash";
 import { ColorRing } from "react-loader-spinner";
 
-const ProductModal = ({ isOpen, toggle, selectedProducts, products, setSelectedProducts, productList, setProductList, setProducts, defaultProdId }) => {
+const ProductModal = ({ isOpen, toggle, products, productList, setProductList, setProducts, defaultProdId }) => {
 
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1)
@@ -23,18 +23,22 @@ const ProductModal = ({ isOpen, toggle, selectedProducts, products, setSelectedP
   const modalBodyRef = useRef(null);
 
   const debouncedFetch = debounce((page, term) => {
-    fetchProductService(page, term);
+    fetchProductService(page, term , true);
   }, 300);
 
   useEffect(() => {
     if (search) {
       debouncedFetch(page, search);
-    } else {
-      fetchProductService(page, '');
-    }
-  }, [search, page])
+    } 
+  }, [search])
 
-  console.log(page, "35");
+  useEffect(() => {
+    if(page){
+        fetchProductService(page, '',false);
+    }
+  }, [page])
+
+
 
 
 
@@ -135,13 +139,19 @@ const ProductModal = ({ isOpen, toggle, selectedProducts, products, setSelectedP
   }, [products]);
 
 
-  const fetchProductService = async (page, query) => {
+  const fetchProductService = async (page, query , isSearch) => {
+    
     setLoading(true)
-
    
    const res = await fetchProducts(page, query)
     if (res.status === 200) {
-      setProductList((prevList) => [...prevList, ...res.data])
+      if(!isSearch){
+        setProductList((prevList) => [...prevList, ...res.data])
+
+      }else{
+      setProductList(res.data)
+
+      }
       setTimeout(() => {
       setLoading(false)
       }, 200);
